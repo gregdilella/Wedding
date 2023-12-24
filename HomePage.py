@@ -37,26 +37,28 @@ lottie_animation = load_lottie_animation(LOTTIE_ANIMATION)
 st_lottie(lottie_animation, key="lottie-holiday", height=300)
 
 
-st.markdown(
-    f"""
-    <div style="font-size: 20px;">
-    You Are Invited To Our Wedding!<br><br>
-    It's At 5pm On June 29th, At The Mount Stephen.<br>
-    <a href="{google_maps_url}" target="_blank">{address}</a>
-    <a href="{google_maps_url}" target="_blank"><img src="{maps_icon_url}" alt="Maps Icon" style="height:20px; width:20px; margin-left: 5px;"/></a>.
+st.markdown("""
+    <div style="font-size: 30px;">
+    You Are Invited To Our Wedding!
     </div>
-    <br>
-    Best to leave the kids at home.<br><br>
+""", unsafe_allow_html=True)
+# Wedding Details
+st.markdown("""
+    <div style="font-size: 20px;">
+    It's At 5pm On June 29th, At The Mount Stephen.
+    </div>
+""", unsafe_allow_html=True)
 
-    Please fill out the form below to help us plan the event.
-    """,
-    unsafe_allow_html=True
-)
+st.write("Best to leave the kids at home.")
+
+# Form Prompt
+st.write("Please fill out the form below to help us plan the event.")
+
 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-existing_data = conn.read(worksheet="Responses", usecols=list(range(5)), ttl=5)
+existing_data = conn.read(worksheet="Responses", usecols=list(range(6)), ttl=5)
 existing_data = existing_data.dropna(how="all")
 
 YES_NO = [
@@ -95,6 +97,7 @@ with st.form(key="vendor_form"):
                         "Number": NumberOfParty,
                         "Meal": MealRestriction,
                         "Notes": additional_info,
+                        "Time": pd.Timestamp.now(),
                     }
                 ]
             )
