@@ -5,14 +5,12 @@ from streamlit_extras.let_it_rain import rain
 import pandas as pd
 from pathlib import Path
 import json
+import datetime
 
 
 st.set_page_config(page_title="Lisa and Greg", page_icon="⚭")
 st.title("Lisa and Greg's Wedding Portal")
 
-address = "1440 Drummond Street, Montreal, Quebec H3G 1V9 Canada"
-google_maps_url = f"https://www.google.com/maps/search/?api=1&query={address.replace(' ', '+')}"
-maps_icon_url = "https://blog.gisplanning.com/hs-fs/hubfs/GoogleMaps-Icon-alone-1.png?width=1200&name=GoogleMaps-Icon-alone-1.png"
 
 THIS_DIR = Path(__file__).parent
 CSS_FILE = THIS_DIR / "style" / "style.css"
@@ -24,11 +22,6 @@ def load_lottie_animation(file_path):
     with open(file_path, "r") as f:
         return json.load(f)
     
-def run_snow_animation():
-    rain(emoji="❤️", font_size=20, falling_speed=5, animation_length="infinite")
-
-
-run_snow_animation()
 
 with open(CSS_FILE) as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -88,24 +81,23 @@ with st.form(key="vendor_form"):
             st.warning("Ensure all mandatory fields are filled.")
             st.stop()
         else:
-            # Create a new row of  data
-            new_data = pd.DataFrame(
-                [
-                    {
-                        "Name": Name,
-                        "Attending": Attending,
-                        "Number": NumberOfParty,
-                        "Meal": MealRestriction,
-                        "Notes": additional_info,
-                        "Time": pd.Timestamp.now(),
-                    }
-                ]
-            )
+            # Create a new row of data
+            new_data = {
+                "Name": Name,
+                "Attending": Attending,
+                "Number": NumberOfParty,
+                "Meal": MealRestriction,
+                "Notes": additional_info,
+                "Time": datetime.datetime.now()  # Assign the timestamp only here
+            }
 
-            # Add the new vendor data to the existing data
-            updated_df = pd.concat([existing_data, new_data], ignore_index=True)
+            # Add the new data to the existing DataFrame
+            updated_df = existing_data.append(new_data, ignore_index=True)
 
-            # Update Google Sheets with the new vendor data
+            # Update Google Sheets with the new data
             conn.update(worksheet="Responses", data=updated_df)
 
-            st.success("Wedding Invite Details Successfully Submitted!")
+            if Attending.upper() == "NO":
+                st.warning(f"Sorry you can't make it, {Name}!")
+            elif Attending.upper() == "YES":
+                st.success(f"Looking forward to seeing you there {Name}!")

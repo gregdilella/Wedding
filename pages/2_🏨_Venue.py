@@ -14,8 +14,21 @@ import pydeck as pdk
 # Address to display
 address = "1440 Drummond Street, Montreal, Quebec H3G 1V9 Canada"
 
-# Display the address in a box
-# st.info(address)
+embed_url = "https://30days.streamlit.app/?embed=true"
+
+# Create two columns
+col1, col2 = st.columns([0.9, 0.1])
+
+
+# In the second column, create the copy button
+with col2:
+    st.markdown("""
+        <button onclick="navigator.clipboard.writeText(`{}`)" style="float: right;">
+            Copy
+        </button>
+    """.format(embed_url), unsafe_allow_html=True)
+
+
 
 # Coordinates for the address (latitude and longitude)
 latitude = 45.4999
