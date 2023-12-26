@@ -121,7 +121,7 @@ with st.form(key="vendor_form"):
             # Update Google Sheets with the new data
             conn.update(worksheet="Responses", data=updated_df)
 
-            if Attending.upper() == "NO":
+            if Attending == ":red[No]":
                 st.warning(f"Sorry you can't make it, {Name}!")
-            elif Attending.upper() == "YES":
-                st.success(f"Looking forward to seeing you there {Name}!")
+            elif Attending == ":green[Yes]":
+                st.success(f"Looking forward to seeing you there, {Name}!")
