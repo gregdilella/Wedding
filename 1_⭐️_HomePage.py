@@ -6,7 +6,6 @@ import pandas as pd
 from pathlib import Path
 import json
 import datetime
-from streamlit_option_menu import option_menu
 from pathlib import Path
 
 st.set_page_config(page_title="Lisa and Greg", page_icon="⚭")
