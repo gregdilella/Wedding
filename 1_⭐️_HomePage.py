@@ -6,16 +6,46 @@ import pandas as pd
 from pathlib import Path
 import json
 import datetime
-
+from streamlit_option_menu import option_menu
+from pathlib import Path
 
 st.set_page_config(page_title="Lisa and Greg", page_icon="⚭")
+
+import base64
+
+def get_image_as_base64(file_path):
+    with open(file_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode('utf-8')
+
+def add_logo():
+    logo_base64 = get_image_as_base64('assets/5mYgrm-LogoMakr.png')
+    st.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: url("data:image/png;base64,{logo_base64}");
+                background-repeat: no-repeat;
+                padding-top: 180px;
+
+                background-position: 20px 20px;
+            }}
+
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+add_logo()
+
 st.title("Lisa and Greg's Wedding Portal")
 
 
 THIS_DIR = Path(__file__).parent
 CSS_FILE = THIS_DIR / "style" / "style.css"
 ASSETS = THIS_DIR / "assets"
-LOTTIE_ANIMATION = ASSETS / "weddingfall.json"
+LOTTIE_ANIMATION = ASSETS / "WhatsAppVideo.json"
+LOGO = ASSETS / "5xUEXG-LogoMakr.png"
+
 
 # Function to load and display the Lottie animation
 def load_lottie_animation(file_path):
@@ -26,28 +56,22 @@ def load_lottie_animation(file_path):
 with open(CSS_FILE) as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+
+
 lottie_animation = load_lottie_animation(LOTTIE_ANIMATION)
-st_lottie(lottie_animation, key="lottie-holiday", height=300)
+st_lottie(lottie_animation, key="lottie-holiday", height=500)
 
 
-st.markdown("""
-    <div style="font-size: 30px;">
-    You Are Invited To Our Wedding!
-    </div>
-""", unsafe_allow_html=True)
-# Wedding Details
+st.subheader("You Are Invited To Our Wedding!")
+
 st.markdown("""
     <div style="font-size: 20px;">
-    It's At 5pm On June 29th, At The Mount Stephen.
+    It's At 4pm On June 29th, At The Mount Stephen.<br><br>
     </div>
 """, unsafe_allow_html=True)
-
-st.write("Best to leave the kids at home.")
 
 # Form Prompt
 st.write("Please fill out the form below to help us plan the event.")
-
-
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
@@ -64,7 +88,8 @@ YES_NO = [
 with st.form(key="vendor_form"):
     
     Name = st.text_input(label="Name*")
-    Attending = st.selectbox("Are You Planning On Coming?*", options=YES_NO, index=None)
+    Attending = st.radio("Are You Planning On Coming?*",[":green[Yes]", ":red[No]"],index=None,horizontal=True)
+    # Attending = st.selectbox("Are You Planning On Coming?*", options=YES_NO, index=None)
     NumberOfParty = st.slider("How Many People Are In Your Party?*", 1, 5, 1)
     MealRestriction = st.text_area(label="Do You Have Any Meal Restrictions?    If Yes, Please Describe Them Here.",height=50)
     additional_info = st.text_area(label="Additional Info", height=50)
