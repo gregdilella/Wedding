@@ -67,7 +67,7 @@ st.image(rounded_image, caption='The day I asked Lisa to Marry Me', use_column_w
 
 st.markdown('<br><br>', unsafe_allow_html=True)
 st.markdown("""
-            &nbsp;&nbsp;&nbsp;&nbsp;On a crisp, sun-dappled afternoon, we dog walked through the nearby park, as we approached our favourite spot, I felt my heart pounding with a mix of excitement and nervous anticipation. With a deep breath, I turned to her, the love of my life, and with words woven from the deepest fibers of my heart, I proposed. Unbeknownst to her, our friends, like skillful ninjas, were discreetly nestled behind trees and bushes, cameras at the ready, capturing the moment her surprise turned to tears.""")
+            &nbsp;&nbsp;&nbsp;&nbsp;On a crisp, sunny fall afternoon, we dog walked through the nearby park, as we approached our favourite spot, I felt my heart pounding with a mix of excitement and nervous anticipation. With a deep breath, I turned to her, the love of my life, and with words woven from the deepest fibers of my heart, I proposed. Unbeknownst to her, our friends, like skillful ninjas, were discreetly nestled behind trees and bushes, cameras at the ready, capturing the moment her surprise turned to tears.""")
 st.markdown('<br><br>', unsafe_allow_html=True)
 
 image_path = "assets/knee.png"
