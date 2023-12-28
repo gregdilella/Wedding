@@ -61,7 +61,7 @@ radius = 50  # radius of the rounded corners
 rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
 
 # Display the image
-st.image(rounded_image, caption='The day I asked Lisa to Marry Me', use_column_width=True)
+st.image(rounded_image, caption='The day I Asked Lisa To Marry Me', use_column_width=True)
 
 
 

@@ -38,7 +38,6 @@ add_logo()
 
 st.title("Lisa and Greg's Wedding Portal")
 
-
 THIS_DIR = Path(__file__).parent
 CSS_FILE = THIS_DIR / "style" / "style.css"
 ASSETS = THIS_DIR / "assets"
@@ -58,19 +57,25 @@ with open(CSS_FILE) as f:
 
 
 lottie_animation = load_lottie_animation(LOTTIE_ANIMATION)
-st_lottie(lottie_animation, key="lottie-holiday", height=500)
 
+col1, col2 = st.columns(2)
 
-st.subheader("You Are Invited To Our Wedding!")
+# Place the Lottie animation in the first column
+with col1:
+    st.subheader("You're Invited to Our Wedding Celebration!")
+    st.markdown("""
+        <div style="font-size: 20px;">
+        We are thrilled to announce a very special day in our lives and would be honored to have you join us in celebration. Please mark your calendars for the 29th of June 2024, at the Mount Stephen!
+        """, unsafe_allow_html=True)
 
-st.markdown("""
-    <div style="font-size: 20px;">
-    It's At 4pm On June 29th, At The Mount Stephen.<br><br>
-    </div>
-""", unsafe_allow_html=True)
+# Place the subheader and markdown in the second column
+with col2:
 
-# Form Prompt
-st.write("Please fill out the form below to help us plan the event.")
+    st_lottie(lottie_animation, key="lottie-holiday", height=250)
+
+st.markdown('<br><br>', unsafe_allow_html=True)
+st.write("We promise an evening of great company, delicious food, and a lively celebration.")
+st.write("Please RSVP by filling out the form below to confirm your attendance. Also check out the other pages in the sidebar!")
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
@@ -125,3 +130,6 @@ with st.form(key="vendor_form"):
                 st.warning(f"Sorry you can't make it, {Name}!")
             elif Attending == ":green[Yes]":
                 st.success(f"Looking forward to seeing you there, {Name}!")
+
+
+ 
