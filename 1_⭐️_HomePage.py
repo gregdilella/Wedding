@@ -68,10 +68,20 @@ with col1:
         We are thrilled to announce a very special day in our lives and would be honored to have you join us in celebration. Please mark your calendars for the 29th of June 2024, at the Mount Stephen!
         """, unsafe_allow_html=True)
 
+def get_video_base64(video_path):
+    with open(video_path, "rb") as video_file:
+        return base64.b64encode(video_file.read()).decode()
+# Convert your video to base64
+video_base64 = get_video_base64('assets/WhatsAppVideo.mp4')
 # Place the subheader and markdown in the second column
 with col2:
+    
+    st.markdown(f"""
+        <video width="auto" height="300" controls>
+            <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
+        </video>
+        """, unsafe_allow_html=True)
 
-    st_lottie(lottie_animation, key="lottie-holiday", height=250)
 
 st.markdown('<br><br>', unsafe_allow_html=True)
 st.write("We promise an evening of great company, delicious food, and a lively celebration.")
