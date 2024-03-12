@@ -61,13 +61,25 @@ layer = pdk.Layer(
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=map_view))
 
 st.markdown('<br><br>', unsafe_allow_html=True)
-st.markdown("""
-            &nbsp;&nbsp;&nbsp;&nbsp;The Mount Stephen Club in Montreal, initially established as a private gentlemen's club in 1926, is housed in a mansion built in 1880 for George Stephen. This building is a prominent example of Victorian-era architecture, reflecting the city's historical and cultural heritage. Over the years, it transitioned from a private residence to an exclusive club for Montreal's elite. It has been repurposed into a luxury boutique hotel, blending its historical essence with modern functionality.
 
-    &nbsp;&nbsp;&nbsp;&nbsp;George Stephen was a significant figure in Canadian history, primarily known for his role in the development of the Canadian Pacific Railway and as President of the Bank of Montreal. His contributions to Canada's economic and infrastructural development have left a lasting legacy, with the Mount Stephen mansion standing as a tangible reminder of his impact on Canadian society.
+def colored_bold_handwriting_text(text):
+    # Ensure single and double quotes are used correctly here
+    return f"<span style=\" font-weight:bold; font-family:'Great Vibes', cursive;\">{text}</span>"
+
+venue_text2 = colored_bold_handwriting_text("""
+            The Mount Stephen Club in Montreal, initially established as a private gentlemen's club in 1926, is housed in a mansion built in 1880 for George Stephen. This building is a prominent example of Victorian-era architecture, reflecting the city's historical and cultural heritage. Over the years, it transitioned from a private residence to an exclusive club for Montreal's elite. It has been repurposed into a luxury boutique hotel, blending its historical essence with modern functionality.
             """)
+st.markdown(venue_text2, unsafe_allow_html=True)
+
 
 st.markdown('<br><br>', unsafe_allow_html=True)
+
+venue_text3 = colored_bold_handwriting_text("""
+            George Stephen was a significant figure in Canadian history, primarily known for his role in the development of the Canadian Pacific Railway and as President of the Bank of Montreal. His contributions to Canada's economic and infrastructural development have left a lasting legacy, with the Mount Stephen mansion standing as a tangible reminder of his impact on Canadian society.
+            """)
+st.markdown(venue_text3, unsafe_allow_html=True)
+st.markdown('<br><br>', unsafe_allow_html=True)
+
 # st.image("assets/mtstephen.png", caption='Le Mount Stephen', use_column_width=True)
 
 from PIL import Image, ImageDraw
@@ -94,4 +106,4 @@ radius = 50  # radius of the rounded corners
 rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
 
 # Display the image
-st.image(rounded_image, caption='Le Mount Stephen', use_column_width=True)
+st.image(rounded_image, caption='The Mount Stephen', use_column_width=True)

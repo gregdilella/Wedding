@@ -25,6 +25,10 @@ def add_logo():
         unsafe_allow_html=True,
     )
 
+def colored_bold_handwriting_text(text):
+    # Ensure single and double quotes are used correctly here
+    return f"<span style=\" font-weight:bold; font-family:'Great Vibes', cursive;\">{text}</span>"
+
 add_logo()
 
 st.title("The Proposal")
@@ -61,13 +65,16 @@ radius = 50  # radius of the rounded corners
 rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
 
 # Display the image
-st.image(rounded_image, caption='The day I Asked Lisa To Marry Me', use_column_width=True)
+st.image(rounded_image, caption='The Day Greg Proposed', use_column_width=True)
 
 
 
 st.markdown('<br><br>', unsafe_allow_html=True)
-st.markdown("""
-            &nbsp;&nbsp;&nbsp;&nbsp;On a crisp, sunny fall afternoon, we dog walked through the nearby park, as we approached our favourite spot, I felt my heart pounding with a mix of excitement and nervous anticipation. With a deep breath, I turned to her, the love of my life, and with words woven from the deepest fibers of my heart, I proposed. Unbeknownst to her, our friends, like skillful ninjas, were discreetly nestled behind trees and bushes, cameras at the ready, capturing the moment her surprise turned to tears.""")
+
+
+prop_text1 = colored_bold_handwriting_text("""
+            &nbsp;&nbsp;&nbsp;&nbsp;On a crisp fall afternoon, Lisa and Greg dog-walked through the King George park. As they approached thier favourite spot, Greg's heart pounded with a mix of excitement and nervous anticipation. With a deep breath, he turned to her, the love of his life, and with words woven from the bottom of his heart, he proposed. Unbeknownst to her, their friends were discreetly nestled behind trees and bushes like skillful ninjas, cameras at the ready, capturing the moment of her surprise.""")
+st.markdown(prop_text1, unsafe_allow_html=True)
 st.markdown('<br><br>', unsafe_allow_html=True)
 
 image_path = "assets/knee.png"
@@ -82,6 +89,9 @@ rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
 st.image(rounded_image, caption='Actual Photo', use_column_width=True)
 
 st.markdown('<br><br>', unsafe_allow_html=True)
-st.markdown("""    &nbsp;&nbsp;&nbsp;&nbsp;Lisa shares my passion for dogs, finding joy in their enthusiasm and loyalty. Her love for reading opens windows to new worlds and ideas, inspiring endless conversations and learning. Family is her anchor, and she weaves its importance into the fabric of our lives. Travel with her is an adventure, not just in exploring new places but in discovering new depths in each other. Her ambition and drive make her an incredible partner; she's not just striving to reach her goals but also lifting me towards mine. In her, I have found not just a lover and my best friend, but a true partner in every sense of the word.
 
-            """)
+# prop_text2 = colored_bold_handwriting_text("""    &nbsp;&nbsp;&nbsp;&nbsp;Lisa shares my passion for dogs, finding joy in their enthusiasm and loyalty. Her love for reading opens windows to new worlds and ideas, inspiring endless conversations and learning. Family is her anchor, and she weaves its importance into the fabric of our lives. Travel with her is an adventure, not just in exploring new places but in discovering new depths in each other. Her ambition and drive make her an incredible partner; she's not just striving to reach her goals but also lifting me towards mine. In her, I have found not just a lover and my best friend, but a true partner in every sense of the word.
+
+# #             """)
+# st.markdown(prop_text2, unsafe_allow_html=True)
+

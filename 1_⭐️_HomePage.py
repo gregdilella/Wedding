@@ -62,9 +62,9 @@ col1, col2 = st.columns(2)
 
 # Place the Lottie animation in the first column
 with col1:
-    st.subheader("You're Invited to Our Wedding Celebration!")
+    # st.subheader("You're Invited to Our Wedding Celebration!")
     st.markdown("""
-        <div style="font-size: 20px;">
+        <div style="font-size: 20px;font-family:'Great Vibes', cursive;">
         We are thrilled to announce a very special day in our lives and would be honored to have you join us in celebration. Please mark your calendars for the 29th of June 2024, at the Mount Stephen!
         """, unsafe_allow_html=True)
 
@@ -84,9 +84,15 @@ with col2:
 
 
 st.markdown('<br><br>', unsafe_allow_html=True)
-st.write("We promise an evening of great company, delicious food, and a lively celebration.")
-st.write("Please RSVP by filling out the form below to confirm your attendance. Also check out the other pages in the sidebar!")
 
+
+st.markdown("""
+        <div style="font-size: 20px;font-family:'Great Vibes', cursive;">
+        We promise an evening of great company, delicious food, and a lively celebration.
+        Please RSVP by filling out the form below to confirm your attendance. Also check out the other pages in the sidebar!
+        """, unsafe_allow_html=True)
+
+st.title("RSVP")
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 existing_data = conn.read(worksheet="Responses", usecols=list(range(6)), ttl=5)
