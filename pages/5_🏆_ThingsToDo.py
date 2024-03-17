@@ -3,8 +3,8 @@ import pandas as pd
 
 data = {
     "Category": ["Brunch", "Mandy's Salad", "Drinks", "Exercise"],
-    "Greg": ["Bossa Sandwich", "Asian Dressing with Mandarins", "Philemon", "Fight Gym"],
-    "Lisa": ["Arthurs", "Habibi", "Atwater Cocktail Club", "Pilates"]
+    "Greg": ["<a href='https://www.bossa.ca/menu'>Bossa Sandwich</a>", "<a href='https://mandys.ca/en/signature-salads/'>Crunchy Sesame</a>", "<a href='https://www.philemonbar.com/'>Philemon</a>", "<a href='https://h2oma.com/'>Fight Gym</a>"],
+    "Lisa": ["<a href='https://arthursmtl.com/'>Arthurs</a>", "<a href='https://mandys.ca/en/signature-salads/'>The Wolf</a>", "<a href='https://www.atwatercocktailclub.com/'>Atwater Cocktail Club</a>", "<a href='https://www.vicstudios.ca/'>Pilates</a>"]
 }
 
 # Create a DataFrame
