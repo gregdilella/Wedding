@@ -181,7 +181,7 @@ options = [
 # Onboarding New Vendor Form
 with st.form(key="vendor_form"):
     
-    Name = st.selectbox(label="Name*", options=options)
+    Name = st.text_input(label="Name*")
     Attending = st.radio("Are You Planning On Coming?*",[":green[Yes]", ":red[No]"],index=None,horizontal=True)
     # Attending = st.selectbox("Are You Planning On Coming?*", options=YES_NO, index=None)
     NumberOfParty = st.slider("How Many People Are In Your Party?*", 1, 5, 1)
