@@ -1,8 +1,24 @@
 import streamlit as st
 import os
-st.title("Photos")
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        <h1 style="font-family:'Alex Brush', cursive;">Photos</h1>
+        """, unsafe_allow_html=True)
+
 
 import base64
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        h1, h2, p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
 
 def get_image_as_base64(file_path):
     with open(file_path, "rb") as img_file:
@@ -31,7 +47,7 @@ add_logo()
 
 import os
 from PIL import Image, ImageDraw
-import streamlit as st
+
 
 def add_rounded_corners(im, rad):
     circle = Image.new('L', (rad * 2, rad * 2), 0)

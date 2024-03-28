@@ -3,6 +3,19 @@ from streamlit_extras.let_it_rain import rain
 
 import base64
 
+
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        h1, h2, p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+        }
+        </style>
+        
+        """, unsafe_allow_html=True)
+
+
 def get_image_as_base64(file_path):
     with open(file_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode('utf-8')
@@ -25,9 +38,6 @@ def add_logo():
         unsafe_allow_html=True,
     )
 
-def colored_bold_handwriting_text(text):
-    # Ensure single and double quotes are used correctly here
-    return f"<span style=\" font-weight:bold; font-family:'Great Vibes', cursive;\">{text}</span>"
 
 add_logo()
 
@@ -72,10 +82,18 @@ st.image(rounded_image, caption='The Day Greg Proposed', use_column_width=True)
 st.markdown('<br><br>', unsafe_allow_html=True)
 
 
-prop_text1 = colored_bold_handwriting_text("""
-            &nbsp;&nbsp;&nbsp;&nbsp;On a crisp fall afternoon, Lisa and Greg dog-walked through the King George park. As they approached thier favourite spot, Greg's heart pounded with a mix of excitement and nervous anticipation. With a deep breath, he turned to her, the love of his life, and with words woven from the bottom of his heart, he proposed. Unbeknownst to her, their friends were discreetly nestled behind trees and bushes like skillful ninjas, cameras at the ready, capturing the moment of her surprise.""")
-st.markdown(prop_text1, unsafe_allow_html=True)
-st.markdown('<br><br>', unsafe_allow_html=True)
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        p {
+            font-family: 'Alex Brush', cursive;
+            font-size: 24px;
+        }
+        </style>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;On a crisp fall afternoon, Lisa and Greg dog-walked through the King George park. As they approached their favourite spot, Greg's heart pounded with a mix of excitement and nervous anticipation. With a deep breath, he turned to her, the love of his life, and with words woven from the bottom of his heart, he proposed. Unbeknownst to her, their friends were discreetly nestled behind trees and bushes like skillful ninjas, cameras at the ready, capturing the moment of her surprise.</p>
+        <p>PS. Both our beloved dogs were present, the naughty one was not captured in the above picture.</p>
+        """, unsafe_allow_html=True)
 
 image_path = "assets/knee.png"
 image = Image.open(image_path)

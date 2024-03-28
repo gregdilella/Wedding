@@ -35,8 +35,23 @@ def add_logo():
     )
 
 add_logo()
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        h1, h2, p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+        }
+        </style>
+        """, unsafe_allow_html=True)
 
-st.title("Lisa and Greg's Wedding Portal")
+
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        <h1 style="font-family:'Alex Brush', cursive;">Lisa and Greg's Wedding Portal</h1>
+        """, unsafe_allow_html=True)
 
 THIS_DIR = Path(__file__).parent
 CSS_FILE = THIS_DIR / "style" / "style.css"
@@ -63,10 +78,14 @@ col1, col2 = st.columns(2)
 # Place the Lottie animation in the first column
 with col1:
     # st.subheader("You're Invited to Our Wedding Celebration!")
-    st.markdown("""
-        <div style="font-size: 20px;font-family:'Great Vibes', cursive;">
-        We are thrilled to announce a very special day in our lives and would be honored to have you join us in celebration. Please mark your calendars for the 29th of June 2024, at the Mount Stephen!
-        """, unsafe_allow_html=True)
+        st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        <div style="font-size: 24px; font-family:'Alex Brush', cursive;">
+        We are thrilled to announce a very special day in our lives and would be honored to have you join us in celebration.  Mark your calendars for the 29th of June 2024, at the Mount Stephen!
+        </div>""", unsafe_allow_html=True)
+
 
 def get_video_base64(video_path):
     with open(video_path, "rb") as video_file:
@@ -87,12 +106,24 @@ st.markdown('<br><br>', unsafe_allow_html=True)
 
 
 st.markdown("""
-        <div style="font-size: 20px;font-family:'Great Vibes', cursive;">
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        <div style="font-size: 24px; font-family:'Alex Brush', cursive;">
         We promise an evening of great company, delicious food, and a lively celebration.
         Please RSVP by filling out the form below to confirm your attendance. Also check out the other pages in the sidebar!
+        </div>""", unsafe_allow_html=True)
+
+
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        <h1 style="font-family:'Alex Brush', cursive;">RSVP</h1>
         """, unsafe_allow_html=True)
 
-st.title("RSVP")
+
+
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 existing_data = conn.read(worksheet="Responses", usecols=list(range(6)), ttl=5)
@@ -103,11 +134,54 @@ YES_NO = [
     "NO",
 ]
 
+options = [
+    "","Ian and Leila Henriques", "Meagan and Michalis Iriotakis",
+    "Kerri Henriques and Aymen Djellal", "Neela, Darren and Valerie Pymento",
+    "Sharon Pymento", "Erica Street", "Emma Street", "Neil Henriques",
+    "Tina Iriotakis and Gianni Ciliberto", "Karl Henriques",
+    "Max Gaudette and Judith Darmon", "Albert and Regine Hadida",
+    "Arthur Pereira", "Alwyn and Marjorie Rapose", "Melinda and Celso Furtado",
+    "Marian and Carl Fernandes", "Vivianne Lapointe and Damien Auger", "Ali Siddiquee",
+    "Mary Quiroz", "Nadia Monczak and Benjamin Deschamps",
+    "Gabrielle Bibas and Tomer Zazkis", "Michelle Chitayat and Kenneth Kunin",
+    "Patrick Moynihan and Guillaume Labelle", "Natela Baron Goldman and Eric Perruclet",
+    "John Di Lella and Sandy Gasparini", "Valerie Di Lella and Drew Nicholson",
+    "Bill, Natasha, Chelsey and Victoria Campbell", "Gino Di Lella", "Mike Di Lella",
+    "Joe and Rita Di Lella", "Lauren Di Lella", "James Di Lella and Elyse Champagne",
+    "Laura Piro and Lino Iaizzo", "Lina Iaciofano and Tony Discenza",
+    "Pasqualino and Maria Iaciofano", "Mary Fantacone and Tony Filiatrault",
+    "Flora Fantacone and Jimmy Gianopoulos", "Mary Romano and Joe Iaricci",
+    "Nick and Connie Primiano", "Steve Knezevic and Linda Dolnik",
+    "John and Patsy Patone", "Maurice and Amy Conti", "Zsolt Szigetvari and Maggie Lettuca",
+    "Tyler Ehler and Angeline Darses", "Michael Baslyk", "Martin Antonov Spasov",
+    "William and Ashley McLaughlin", "Christina Pantuso and Tim Schiavi",
+    "Carolyn De Luca and James Lavinskas", "Lisa Pico and Richard Ribaya",
+    "Christine Mangione and Daniel Laplante", "Wendy Duran and Ben Ross",
+    "Raquel Ferdinand and Dylan Pearson", "Alicia Schiavi and David Del Re",
+    "Savina Caporali", "Victoria D'Alessandro", "Stefanie Fontana",
+    "AJ Dopud", "Yohan Henriques and Mara De Simone", "Peter and Zoe Iriotakis",
+    "Nadia, Mohammed and Ines Djellal", "Roger, Donna, Matthew and Brian Henriques",
+    "Jude Netto", "Nicola and Jonathan White", "Sonya and Sebastian Pereira",
+    "Eva Paylan", "Mariam and Ji Song", "Mervyn and Cynthia Pereira",
+    "Caryl and Gerard Pinto", "Tim and Mary Kougias", "Khac Minh Nguyen",
+    "Sayeh Davoudi and Alex Marcakis", "Karis Cheung", "Atefa Jaffari",
+    "Sarah Monsonego and Josh Benchetrit", "Madonna Tamoeva and Paul Budhiraja",
+    "Rosie Faucher and Hugo Potvin", "Slobodan Milosevic", "Michel Marleau",
+    "Serghei Bucatel", "Linda Campbell", "Pamela and Ed Piro", "Manuela Lombardi",
+    "Claudio and Angela Di Lella", "Benito and Elvira Garzia", "Tony and Marise Romano",
+    "Nick and Carmen Pallotta", "Stella and Agostino Mariani", "Matthew Miller",
+    "Shaun and Jillian McLaughlin", "Steve Haraschak", "Samantha Taran and Matthew Chausse",
+    "Etienne Goulet Lang", "Nik-ki and Mike Street", "Vinita, Raminder, Rahul and Ramon Singh",
+    "Jal and Nergish Panthaki", "Giovanni and Federica Di Lella", "Keif Orsini"
+]
+
+
+
 
 # Onboarding New Vendor Form
 with st.form(key="vendor_form"):
     
-    Name = st.text_input(label="Name*")
+    Name = st.selectbox(label="Name*", options=options)
     Attending = st.radio("Are You Planning On Coming?*",[":green[Yes]", ":red[No]"],index=None,horizontal=True)
     # Attending = st.selectbox("Are You Planning On Coming?*", options=YES_NO, index=None)
     NumberOfParty = st.slider("How Many People Are In Your Party?*", 1, 5, 1)

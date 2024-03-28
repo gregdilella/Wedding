@@ -27,7 +27,22 @@ def add_logo():
 
 add_logo()
 
-st.title("Le Mount Stephen")
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+            font-size: 22px;
+        }
+        </style>
+        <h1>Le Mount Stephen</h1>
+        <p>We are so excited to get married at the Mount Stephen. The venue is situated in the heart of Montreal, the city we call home. Here is some fun information on the history of the building and the man who it’s named after.</p>
+        """, unsafe_allow_html=True)
+
+
+
+
 
 address = "1440 Drummond Street, Montreal, Quebec H3G 1V9 Canada"
 
@@ -63,22 +78,29 @@ st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=map_view))
 st.markdown('<br><br>', unsafe_allow_html=True)
 
 def colored_bold_handwriting_text(text):
-    # Ensure single and double quotes are used correctly here
-    return f"<span style=\" font-weight:bold; font-family:'Great Vibes', cursive;\">{text}</span>"
+    return f"<span style=\"font-weight:bold; font-family:'Alex Brush', cursive; font-size: 22px;\">{text}</span>"
 
 venue_text2 = colored_bold_handwriting_text("""
             The Mount Stephen Club in Montreal, initially established as a private gentlemen's club in 1926, is housed in a mansion built in 1880 for George Stephen. This building is a prominent example of Victorian-era architecture, reflecting the city's historical and cultural heritage. Over the years, it transitioned from a private residence to an exclusive club for Montreal's elite. It has been repurposed into a luxury boutique hotel, blending its historical essence with modern functionality.
             """)
-st.markdown(venue_text2, unsafe_allow_html=True)
-
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        """ + venue_text2, unsafe_allow_html=True)
 
 st.markdown('<br><br>', unsafe_allow_html=True)
 
 venue_text3 = colored_bold_handwriting_text("""
             George Stephen was a significant figure in Canadian history, primarily known for his role in the development of the Canadian Pacific Railway and as President of the Bank of Montreal. His contributions to Canada's economic and infrastructural development have left a lasting legacy, with the Mount Stephen mansion standing as a tangible reminder of his impact on Canadian society.
             """)
-st.markdown(venue_text3, unsafe_allow_html=True)
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        </style>
+        """ + venue_text3, unsafe_allow_html=True)
 st.markdown('<br><br>', unsafe_allow_html=True)
+
 
 # st.image("assets/mtstephen.png", caption='Le Mount Stephen', use_column_width=True)
 
