@@ -2,6 +2,31 @@ import streamlit as st
 
 
 import base64
+import pydeck as pdk
+
+from PIL import Image, ImageDraw
+
+def add_rounded_corners(im, rad):
+    circle = Image.new('L', (rad * 2, rad * 2), 0)
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, rad * 2, rad * 2), fill=255)
+    alpha = Image.new('L', im.size, 255)
+    w,h = im.size
+    alpha.paste(circle.crop((0, 0, rad, rad)), (0, 0))
+    alpha.paste(circle.crop((0, rad, rad, rad * 2)), (0, h - rad))
+    alpha.paste(circle.crop((rad, 0, rad * 2, rad)), (w - rad, 0))
+    alpha.paste(circle.crop((rad, rad, rad * 2, rad * 2)), (w - rad, h - rad))
+    im.putalpha(alpha)
+    return im
+
+image_path = "assets/mtstephen.png"
+image = Image.open(image_path)
+
+# Add rounded corners (adjust radius as needed)
+radius = 50  # radius of the rounded corners
+rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
+
+embed_url = "https://30days.streamlit.app/?embed=true"
 
 def get_image_as_base64(file_path):
     with open(file_path, "rb") as img_file:
@@ -41,20 +66,20 @@ st.markdown("""
         """, unsafe_allow_html=True)
 
 
+# Display the image
+st.image(rounded_image, caption='The Mount Stephen', use_column_width=True)
+image_path = "assets/mtstephen.png"
+image = Image.open(image_path)
 
-
+# Add rounded corners (adjust radius as needed)
+radius = 50  # radius of the rounded corners
+rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
 
 address = "1440 Drummond Street, Montreal, Quebec H3G 1V9 Canada"
 
-# Display the address in a box
-st.code(address)
 
 
-import streamlit as st
-import pydeck as pdk
 
-# Address to display
-address = "1440 Drummond Street, Montreal, Quebec H3G 1V9 Canada"
 
 embed_url = "https://30days.streamlit.app/?embed=true"
 
@@ -73,7 +98,7 @@ layer = pdk.Layer(
     get_color=[255, 0, 0, 200],
     get_radius="size",
 )
-st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=map_view))
+
 
 st.markdown('<br><br>', unsafe_allow_html=True)
 
@@ -120,12 +145,6 @@ def add_rounded_corners(im, rad):
     return im
 
 # Load your image
-image_path = "assets/mtstephen.png"
-image = Image.open(image_path)
+st.code(address)
+st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=map_view))
 
-# Add rounded corners (adjust radius as needed)
-radius = 50  # radius of the rounded corners
-rounded_image = add_rounded_corners(image.convert("RGBA"), radius)
-
-# Display the image
-st.image(rounded_image, caption='The Mount Stephen', use_column_width=True)
