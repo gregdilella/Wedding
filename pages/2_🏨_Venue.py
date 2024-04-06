@@ -6,6 +6,7 @@ import pydeck as pdk
 
 from PIL import Image, ImageDraw
 
+
 def add_rounded_corners(im, rad):
     circle = Image.new('L', (rad * 2, rad * 2), 0)
     draw = ImageDraw.Draw(circle)
@@ -49,6 +50,30 @@ def add_logo():
         """,
         unsafe_allow_html=True,
     )
+add_logo()
+
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        /* Setting a general font size for all specified elements */
+        h1, h2, p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+            font-size: 24px; /* General size for demonstration */
+        }
+
+        /* You can also specify different sizes for different elements */
+        h1 {
+            font-size: 36px; /* Larger size for h1 */
+        }
+        h2 {
+            font-size: 30px; /* Slightly smaller size for h2 */
+        }
+        p {
+            font-size: 24px; /* Size for paragraphs */
+        }
+        </style>
+        """, unsafe_allow_html=True)
 
 add_logo()
 
@@ -58,7 +83,7 @@ st.markdown("""
         
         p, div, span, a {
             font-family: 'Alex Brush', cursive;
-            font-size: 22px;
+            font-size: 24px;
         }
         </style>
         <h1>Le Mount Stephen</h1>
@@ -148,3 +173,55 @@ def add_rounded_corners(im, rad):
 st.code(address)
 st.pydeck_chart(pdk.Deck(layers=[layer], initial_view_state=map_view))
 
+st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+        
+        p, div, span, a {
+            font-family: 'Alex Brush', cursive;
+            font-size: 24px;
+        }
+        </style>
+        <h1>Accomodation</h1>
+        
+        """, unsafe_allow_html=True)
+
+file_path = 'MountStephensRates.pdf'
+
+# Read the PDF file in binary mode
+with open(file_path, "rb") as pdf_file:
+    pdf_bytes = pdf_file.read()
+
+# Create a download button and offer the PDF as a download
+st.download_button(
+    label="Download Mount Stephens Rates",
+    data=pdf_bytes,
+    file_name="MountStephensRates.pdf",
+    mime="application/pdf"
+)
+
+
+# Display the list of hotels
+st.markdown("""
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+            .alex-brush-font {
+                font-family: 'Alex Brush', cursive;
+                font-size: 24px;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+# Use HTML to apply the custom class for styling
+st.markdown("""
+            <h2 class="alex-brush-font">Here are a few other nearby options:</h2>
+            <ul class="alex-brush-font">
+                <li>The Four Seasons Hotel</li>
+                <li>Vogue Hotel Montreal</li>
+                <li>Le Centre Sheraton Montreal</li>
+                <li>The Ritz-Carlton</li>
+                <li>Hotel OMNI Montreal</li>
+                <li>Le St-Martin Montreal</li>
+            </ul>
+            """, unsafe_allow_html=True)

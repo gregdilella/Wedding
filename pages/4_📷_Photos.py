@@ -1,11 +1,6 @@
 import streamlit as st
 import os
-st.markdown("""
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
-        </style>
-        <h1 style="font-family:'Alex Brush', cursive;">Photos</h1>
-        """, unsafe_allow_html=True)
+
 
 
 import base64
@@ -13,8 +8,21 @@ st.markdown("""
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
         
+        /* Setting a general font size for all specified elements */
         h1, h2, p, div, span, a {
             font-family: 'Alex Brush', cursive;
+            font-size: 24px; /* General size for demonstration */
+        }
+
+        /* You can also specify different sizes for different elements */
+        h1 {
+            font-size: 36px; /* Larger size for h1 */
+        }
+        h2 {
+            font-size: 30px; /* Slightly smaller size for h2 */
+        }
+        p {
+            font-size: 24px; /* Size for paragraphs */
         }
         </style>
         """, unsafe_allow_html=True)

@@ -35,15 +35,7 @@ def add_logo():
     )
 
 add_logo()
-st.markdown("""
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
-        
-        h1, h2, p, div, span, a {
-            font-family: 'Alex Brush', cursive;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+
 
 
 st.markdown("""
@@ -134,49 +126,20 @@ YES_NO = [
     "NO",
 ]
 
-options = [
-    "","Ian and Leila Henriques", "Meagan and Michalis Iriotakis",
-    "Kerri Henriques and Aymen Djellal", "Neela, Darren and Valerie Pymento",
-    "Sharon Pymento", "Erica Street", "Emma Street", "Neil Henriques",
-    "Tina Iriotakis and Gianni Ciliberto", "Karl Henriques",
-    "Max Gaudette and Judith Darmon", "Albert and Regine Hadida",
-    "Arthur Pereira", "Alwyn and Marjorie Rapose", "Melinda and Celso Furtado",
-    "Marian and Carl Fernandes", "Vivianne Lapointe and Damien Auger", "Ali Siddiquee",
-    "Mary Quiroz", "Nadia Monczak and Benjamin Deschamps",
-    "Gabrielle Bibas and Tomer Zazkis", "Michelle Chitayat and Kenneth Kunin",
-    "Patrick Moynihan and Guillaume Labelle", "Natela Baron Goldman and Eric Perruclet",
-    "John Di Lella and Sandy Gasparini", "Valerie Di Lella and Drew Nicholson",
-    "Bill, Natasha, Chelsey and Victoria Campbell", "Gino Di Lella", "Mike Di Lella",
-    "Joe and Rita Di Lella", "Lauren Di Lella", "James Di Lella and Elyse Champagne",
-    "Laura Piro and Lino Iaizzo", "Lina Iaciofano and Tony Discenza",
-    "Pasqualino and Maria Iaciofano", "Mary Fantacone and Tony Filiatrault",
-    "Flora Fantacone and Jimmy Gianopoulos", "Mary Romano and Joe Iaricci",
-    "Nick and Connie Primiano", "Steve Knezevic and Linda Dolnik",
-    "John and Patsy Patone", "Maurice and Amy Conti", "Zsolt Szigetvari and Maggie Lettuca",
-    "Tyler Ehler and Angeline Darses", "Michael Baslyk", "Martin Antonov Spasov",
-    "William and Ashley McLaughlin", "Christina Pantuso and Tim Schiavi",
-    "Carolyn De Luca and James Lavinskas", "Lisa Pico and Richard Ribaya",
-    "Christine Mangione and Daniel Laplante", "Wendy Duran and Ben Ross",
-    "Raquel Ferdinand and Dylan Pearson", "Alicia Schiavi and David Del Re",
-    "Savina Caporali", "Victoria D'Alessandro", "Stefanie Fontana",
-    "AJ Dopud", "Yohan Henriques and Mara De Simone", "Peter and Zoe Iriotakis",
-    "Nadia, Mohammed and Ines Djellal", "Roger, Donna, Matthew and Brian Henriques",
-    "Jude Netto", "Nicola and Jonathan White", "Sonya and Sebastian Pereira",
-    "Eva Paylan", "Mariam and Ji Song", "Mervyn and Cynthia Pereira",
-    "Caryl and Gerard Pinto", "Tim and Mary Kougias", "Khac Minh Nguyen",
-    "Sayeh Davoudi and Alex Marcakis", "Karis Cheung", "Atefa Jaffari",
-    "Sarah Monsonego and Josh Benchetrit", "Madonna Tamoeva and Paul Budhiraja",
-    "Rosie Faucher and Hugo Potvin", "Slobodan Milosevic", "Michel Marleau",
-    "Serghei Bucatel", "Linda Campbell", "Pamela and Ed Piro", "Manuela Lombardi",
-    "Claudio and Angela Di Lella", "Benito and Elvira Garzia", "Tony and Marise Romano",
-    "Nick and Carmen Pallotta", "Stella and Agostino Mariani", "Matthew Miller",
-    "Shaun and Jillian McLaughlin", "Steve Haraschak", "Samantha Taran and Matthew Chausse",
-    "Etienne Goulet Lang", "Nik-ki and Mike Street", "Vinita, Raminder, Rahul and Ramon Singh",
-    "Jal and Nergish Panthaki", "Giovanni and Federica Di Lella", "Keif Orsini"
-]
 
 
-
+st.markdown("""
+            <style>
+            /* Apply font size to general elements */
+            html, body, div, span, app, .block-container * {
+                font-size: 26px !important;
+            }
+            /* Specific adjustments might be needed for input and textarea elements */
+            input, textarea, select, button {
+                font-size: 24px !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
 
 # Onboarding New Vendor Form
 with st.form(key="vendor_form"):
@@ -222,4 +185,9 @@ with st.form(key="vendor_form"):
                 st.success(f"Looking forward to seeing you there, {Name}!")
 
 
- 
+st.markdown("""
+            <div style="font-size: 24px; font-family:'Alex Brush', cursive;">
+            Parking in downtown Montreal can be difficult. 
+            There is a parking lot (Superior Parking located at 1414 Drummond street), adjacent to Mount Stephen's, but spots are limited and cannot be guaranteed.
+            Please plan accordingly and consider taking an Uber/Taxi for a better experience.
+            </div>""", unsafe_allow_html=True)
