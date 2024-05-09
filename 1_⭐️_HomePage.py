@@ -85,13 +85,24 @@ def get_video_base64(video_path):
 # Convert your video to base64
 video_base64 = get_video_base64('assets/WhatsAppVideo.mp4')
 # Place the subheader and markdown in the second column
+
+from PIL import Image, ImageDraw, ImageOps
+imagewedding = Image.open('assets/wedding1.jpeg')
+# Define the function to round the corners of an image
+def round_corners(image, radius):
+    mask = Image.new('L', image.size, 0)
+    draw = ImageDraw.Draw(mask)
+    draw.rounded_rectangle((0, 0) + image.size, radius, fill=255)
+    rounded_image = ImageOps.fit(image, mask.size, centering=(0.5, 0.5))
+    rounded_image.putalpha(mask)
+    return rounded_image
+
+# Apply the round corners function with a specified radius
+rounded_imagewedding = round_corners(imagewedding, radius=50) # Adjust radius as needed
+
+# Display the image in col2 with a specified width of 300
 with col2:
-    
-    st.markdown(f"""
-        <video width="auto" height="300" controls>
-            <source src="data:video/mp4;base64,{video_base64}" type="video/mp4">
-        </video>
-        """, unsafe_allow_html=True)
+    st.image(rounded_imagewedding, width=300)
 
 
 st.markdown('<br><br>', unsafe_allow_html=True)
